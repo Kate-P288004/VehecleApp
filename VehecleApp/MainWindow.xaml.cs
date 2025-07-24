@@ -20,5 +20,26 @@ namespace VehecleApp
         {
             InitializeComponent();
         }
+      
+        private void AddVehicleButton_Click(object sender, RoutedEventArgs e)
+        {
+            string brand = BrandTextBox.Text;
+            string model = ModelTextBox.Text;
+            string year = YearTextBox.Text;
+
+            if (string.IsNullOrWhiteSpace(brand) || string.IsNullOrWhiteSpace(model) || string.IsNullOrWhiteSpace(year))
+            {
+                MessageBox.Show("Please fill in all fields.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+
+
+
+        }
+
+
+
+
     }
 }
