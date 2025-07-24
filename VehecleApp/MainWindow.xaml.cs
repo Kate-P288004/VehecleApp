@@ -1,45 +1,39 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
-namespace VehecleApp
+namespace VehicleApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
         }
-      
-        private void AddVehicleButton_Click(object sender, RoutedEventArgs e)
+
+        private void AddVehicle_Click(object sender, RoutedEventArgs e)
         {
-            string brand = BrandTextBox.Text;
-            string model = ModelTextBox.Text;
-            string year = YearTextBox.Text;
+            string brand = BrandInput.Text;
+            string model = ModelInput.Text;
+            string year = YearInput.Text;
 
             if (string.IsNullOrWhiteSpace(brand) || string.IsNullOrWhiteSpace(model) || string.IsNullOrWhiteSpace(year))
             {
-                MessageBox.Show("Please fill in all fields.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Please enter all fields.");
                 return;
             }
 
+            Vehicle newVehicle = new Vehicle
+            {
+                Brand = brand,
+                Model = model,
+                Year = year
+            };
 
+            VehicleListBox.Items.Add(newVehicle);
 
-
+            // Clear input fields
+            BrandInput.Clear();
+            ModelInput.Clear();
+            YearInput.Clear();
         }
-
-
-
-
     }
 }
